@@ -6,3 +6,4 @@ st.title("Gender Media Bias Tool")
 st.subheader('Leader/Active Bias')
 st.sidebar.header("Leader/Active Bias")
 
+

@@ -26,7 +26,7 @@ if option != 'The Times':
     chart = alt.Chart(category_chart(option), title='Counts of man and women mentioned through categories').mark_bar(
         opacity=1,
     ).encode(
-        column=alt.Column('category', spacing=5, header=alt.Header(labelOrient="bottom")),
+        column=alt.Column('category', header=alt.Header(labelOrient="bottom"), sort=alt.SortField("articles", order="descending")),
         x=alt.X('variable', axis=None),
         y=alt.Y('value:Q'),
         color=alt.Color('variable')
