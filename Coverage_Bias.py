@@ -7,13 +7,22 @@ from charts import monthly_chart, category_chart
 
 st.set_page_config(page_title="Coverage Bias")
 
+style = """
+    <style>
+        .main > div {
+            padding-left: 0rem;
+            padding-right: 0rem;
+        }
+    </style>
+"""
+st.markdown(style, unsafe_allow_html=True)
 st.title("Gender Media Bias Tool")
 st.subheader('Coverage Bias')
 st.sidebar.header('Coverage Bias')
 
 option = st.selectbox(
     'Please Select a Newspaper',
-    ('Washington Post', 'Wall Street Journal', 'The Times', 'New York Times'))
+    ('Wall Street Journal', 'Washington Post', 'The Times', 'New York Times'))
 
 if option != 'The Times':
     chart_monthly = alt.Chart(monthly_chart(option), title='Monthly counts of men and women mentioned') \
