@@ -20,9 +20,9 @@ months = {'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June':
 the_times_categories = ['UK Politics', 'Global Politics', 'Brexit',
                         'Economy', 'Markets', 'Property', 'Personal Finance', 'Banking',
                         'Health', 'Science', 'Technology', 'Transport', 'Law',
-                        'Cricket', 'Tennis', 'Rugby Union', 'Formula One', 'Golf', 'Racing', 'Boxing', 'Olympics',
-                        'TV', 'Film', 'Music', 'Radio & Podcasts', 'Books', 'Theatre', 'Art',
-                        'Beauty', 'Food & Drink', 'Fitness & Wellbeing', 'Home', 'Gardening', 'Driving']
+                        'Cricket', 'Tennis', 'Rugby Union', 'Formula One', 'Golf', 'Horse Racing and Tips', 'Boxing', 'Winter Olympics 2022',
+                        'Television', 'Film', 'Music', 'Radio & Podcasts', 'Books', 'Theatre', 'Art Reviews',
+                        'Beauty', 'Food & Drink', 'Fitness & Wellbeing', 'Home Interiors', 'Gardening', 'Driving']
 
 
 def monthly_chart(option):
