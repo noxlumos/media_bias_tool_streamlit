@@ -25,6 +25,8 @@ option = st.selectbox(
     ('Wall Street Journal', 'Washington Post', 'The Times', 'New York Times'))
 
 if option != 'The Times':
+    st.markdown('#')
+
     chart_monthly = alt.Chart(monthly_chart(option), title='Monthly counts of men and women mentioned') \
         .mark_line() \
         .encode(
@@ -32,6 +34,8 @@ if option != 'The Times':
         y=alt.Y('value:Q'),
         color=alt.Color("name:N"))
     st.altair_chart(chart_monthly, use_container_width=True)
+
+    st.markdown('#')
 
     chart = alt.Chart(category_chart(option), title='Counts of men and women mentioned through categories').mark_bar(
         opacity=1,
