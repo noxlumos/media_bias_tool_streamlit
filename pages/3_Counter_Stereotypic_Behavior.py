@@ -1,6 +1,20 @@
 import streamlit as st
 import altair as alt
-from charts import sentiment_analysis
+import pandas as pd
+
+def sentiment_analysis(section):
+    outputs = pd.read_csv('data/sentiment_analysis_wsj.csv')
+    print(outputs)
+    alt.data_transformers.disable_max_rows()
+    data = pd.DataFrame({
+        'gender': ['male', 'female'],
+        'negative': [outputs['m_n_p'][section]+outputs['m_v_n_p'][section], outputs['f_n_p'][section]+outputs['f_v_n_p'][section]],
+        'positive': [outputs['m_p_p'][section]+outputs['m_v_p_p'][section], outputs['f_p_p'][section]+outputs['f_v_p_p'][section]],
+        'neutral': [outputs['m_n'][section], outputs['f_n'][section]],
+    })
+    prediction_table = pd.melt(data, id_vars=['gender'], value_vars=['negative', 'positive', 'neutral'])
+    return prediction_table
+
 st.set_page_config(page_title="Counter Stereotypic Behavior")
 
 st.title("Gender Media Bias Tool")
