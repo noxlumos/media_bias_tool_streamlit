@@ -6,8 +6,8 @@ st.set_page_config(page_title="Leader&Active Bias")
 st.title("Gender Media Bias Tool")
 st.subheader('Leader/Active Bias')
 st.sidebar.header("Leader/Active Bias")
-st.markdown("In this study, a FastText word embedding model trained on corpus of 45372 articles obtained from the Washington Post during 2022 was used to investigate potential biases in word associations. Word embeddings capture semantic relationships between words by representing them as dense vectors in a high-dimensional space. By leveraging this model, researchers aimed to explore whether certain biases exist in how men and women are portrayed in the media.")
-st.markdown("The study employed the Word Embedding Association Test (WEAT), a statistical technique used to measure the association between sets of target words and attribute words. The target words in this case were related to gender, with categories such as \"Male\" and \"Female.\" The attribute words represented specific characteristics, such as being active, dominant, leaders, or perpetrators for men, and passive, submissive, followers, or victims for women.")
+st.markdown("In this study, a **FastText** word embedding model trained on corpus of 45372 articles obtained from the **Washington Post** during 2022 was used to investigate potential biases in word associations. Word embeddings capture semantic relationships between words by representing them as dense vectors in a high-dimensional space. By leveraging this model, researchers aimed to explore whether certain biases exist in how men and women are portrayed in the media.")
+st.markdown("The study employed the **Word Embedding Association Test (WEAT)**, a statistical technique used to measure the association between sets of target words and attribute words. The target words in this case were related to gender, with categories such as \"Male\" and \"Female.\" The attribute words represented specific characteristics, such as being active, dominant, leaders, or perpetrators for men, and passive, submissive, followers, or victims for women.")
 leader = ['leader', 'active', 'dominant', 'confident', 'strong', 'assertive', 'ambitious', 'successful', 'inspiring', 'influential', 'visionary']
 follower = ['follower', 'passive', 'submissive', 'meek', 'dependent', 'obedient', 'quiet', 'shy', 'gentle', 'nurturing', 'emotional']
 victimhood = ['vulnerable', 'sensitive', 'emotional', 'caring', 'empathetic', 'compassionate', 'sympathetic', 'nurturing', 'supportive', 'maternal']
@@ -62,6 +62,6 @@ st.slider('Male names and Female names wrt Leader and Follower', min_value=-2.0,
 
 st.slider('Male names and Female names wrt Perpetrator and Victim', min_value=-2.0, max_value=2.0, value=0.18, step=1.0, disabled=True)
 
-st.markdown("The WEAT score of 0.19 and 0.18 indicates that the association is stronger than what would be expected by chance alone. "
+st.markdown("The WEAT score of **0.19** and **0.18** indicates that the association is stronger than what would be expected by chance alone. "
             "This suggests that there is a meaningful difference in the way that men and women are portrayed in the text, "
             "with men more often associated as leaders, perpetrators  and women more often associated as followers, victims.")
