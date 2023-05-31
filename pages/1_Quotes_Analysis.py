@@ -46,7 +46,7 @@ st.markdown('#')
 st.markdown('#')
 
 chart = alt.Chart(category_chart('The Times Quotation Speakers'),
-                  title='Counts of men and women quoted mentioned through categories').mark_bar(
+                  title='Counts of men and women quoted through categories').mark_bar(
     opacity=1,
 ).encode(
     column=alt.Column('category', header=alt.Header(labelOrient="bottom"),

@@ -73,3 +73,18 @@ if option == 'The Times':
 
     pie_chart = charts.pie_chart(option=option, month=month, category=category)
 
+    st.markdown('#')
+    st.markdown('#')
+
+    chart = alt.Chart(category_chart('The Times'),
+                      title='Counts of men and women mentioned through categories').mark_bar(
+        opacity=1,
+    ).encode(
+        column=alt.Column('category', header=alt.Header(labelOrient="bottom"),
+                          sort=alt.SortField("articles", order="descending")),
+        x=alt.X('variable', axis=None),
+        y=alt.Y('value:Q'),
+        color=alt.Color('variable')
+    ).configure_view(stroke='transparent')
+    st.altair_chart(chart)
+
