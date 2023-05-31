@@ -22,7 +22,7 @@ st.sidebar.header('Coverage Bias')
 
 option = st.selectbox(
     'Please Select a Newspaper',
-    ('Wall Street Journal', 'Washington Post', 'The Times', 'New York Times'))
+    ('The Wall Street Journal', 'The Washington Post', 'The Times', 'New York Times'))
 
 if option != 'The Times':
     st.markdown('#')

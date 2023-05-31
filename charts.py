@@ -4,8 +4,8 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-option_monthly = {"Wall Street Journal": "data/wsj_names_monthly.csv",
-                  "Washington Post": "data/wp_names_monthly.csv",
+option_monthly = {"The Wall Street Journal": "data/wsj_names_monthly.csv",
+                  "The Washington Post": "data/wp_names_monthly.csv",
                   "New York Times": "data/wp_names_monthly.csv",
                   "The Times": "data/times_names_monthly.csv",
                   "The Times Quotation Speakers": "data/times_quotation_speakers_monthly.csv"}
