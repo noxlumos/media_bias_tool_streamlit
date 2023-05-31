@@ -10,8 +10,8 @@ option_monthly = {"The Wall Street Journal": "data/wsj_names_monthly.csv",
                   "The Times": "data/times_names_monthly.csv",
                   "The Times Quotation Speakers": "data/times_quotation_speakers_monthly.csv"}
 
-option_category = {"Wall Street Journal": "data/wsj_names_category.csv",
-                   "Washington Post": "data/wp_names_category.csv",
+option_category = {"The Wall Street Journal": "data/wsj_names_category.csv",
+                   "The Washington Post": "data/wp_names_category.csv",
                    "New York Times": "data/wp_names_category.csv",
                    "The Times": "data/times_names_category.csv",
                    "The Times Quotation Speakers": "data/times_quotation_speakers_category.csv"}

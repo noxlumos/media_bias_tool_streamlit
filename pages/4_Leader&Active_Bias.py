@@ -67,10 +67,9 @@ st.markdown("The following results are obtained.")
 
 df2 = pd.DataFrame([[0.195, 0.498, 0.183, 0.608]], index=['The Washington Post'])
 df2.columns = pd.MultiIndex.from_product([['Male names and Female names wrt Leader and Follower', 'Male names and Female names wrt Perpetrator and Victim'],['WEAT Score', 'Effect Size']])
-df2.index.name = 'Newspaper'
-df2.reset_index(inplace=True)
 
-st.write(df2.to_html(index_names=True), unsafe_allow_html=True)
+
+st.write(df2.to_html(index_names=False), unsafe_allow_html=True)
 st.markdown('')
 st.markdown("The results of the analysis show that in the context of \"Male names and Female names wrt Leader and Follower,\" there is a moderate association between gendered names and the attributes of being a leader or a follower. The WEAT score of 0.195 indicates a positive association, suggesting that male names are slightly more associated with leader-related attributes, while female names are slightly more associated with follower-related attributes. The effect size of 0.498 indicates a moderate practical significance, indicating that there is a notable difference between the word sets.")
 st.markdown("In the case of \"Male names and Female names wrt perpetrator and Victim,\" the results indicate a similar pattern. The WEAT score of 0.183 suggests a positive association, indicating that male names are somewhat more associated with the attributes of being a perpetrator, while female names are somewhat more associated with the attributes of being a victim. The effect size of 0.608 indicates a moderate practical significance, highlighting the meaningful distinction between the word sets.")
