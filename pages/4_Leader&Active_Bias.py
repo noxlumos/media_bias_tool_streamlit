@@ -14,8 +14,8 @@ st.markdown("In this study, a word embedding model trained using the powerful [*
 st.markdown("The study employed the [**Word Embedding Association Test (WEAT)**](https://wefe.readthedocs.io/en/latest/_modules/wefe/metrics/WEAT.html), a statistical technique used to measure the association between sets of target words and attribute words. The target words in this case were related to gender, with categories such as \"Male\" and \"Female.\" The attribute words represented specific characteristics, such as being active, dominant, leaders, or perpetrators for men, and passive, submissive, followers, or victims for women.")
 leader = ['leader', 'active', 'dominant', 'confident', 'strong', 'assertive', 'ambitious', 'successful', 'inspiring', 'influential', 'visionary']
 follower = ['follower', 'passive', 'submissive', 'meek', 'dependent', 'obedient', 'quiet', 'shy', 'gentle', 'nurturing', 'emotional']
-victimhood = ['vulnerable', 'sensitive', 'emotional', 'caring', 'empathetic', 'compassionate', 'sympathetic', 'nurturing', 'supportive', 'maternal']
-perpetrator = ['aggressive', 'violent', 'controlling', 'dominating', 'threatening', 'intimidating', 'dangerous', 'harmful', 'abusive', 'manipulative']
+victimhood = ['victim', 'vulnerable', 'sensitive', 'emotional', 'caring', 'empathetic', 'compassionate', 'sympathetic', 'nurturing', 'supportive', 'maternal']
+perpetrator = ['perpetrator', 'aggressive', 'violent', 'controlling', 'dominating', 'threatening', 'intimidating', 'dangerous', 'harmful', 'abusive', 'manipulative']
 
 male_names = "he, man, male, boy, gentleman, father, husband, brother, son, grandfather, uncle"
 female_names = "she, woman, female, girl, lady, mother, wife, sister, daughter, grandmother, aunt"
@@ -65,11 +65,10 @@ st.markdown("In this study, two distinct analyses were carried out using the WEA
 st.markdown("The second analysis retained the same target words (male and female names) but shifted the attribute words to \"perpetrator\" and \"victim\". By examining the association between gendered names and the attributes of being a perpetrator or a victim, this analysis sought to shed light on potential associations or biases associated with gender and these specific roles.")
 st.markdown("The following results are obtained.")
 
-df2 = pd.DataFrame([[0.195, 0.498, 0.183, 0.608]], index=['The Washington Post'])
+df2 = pd.DataFrame([[0.195, 0.498, 0.237, 0.831]], index=['The Washington Post'])
 df2.columns = pd.MultiIndex.from_product([['Male names and Female names wrt Leader and Follower', 'Male names and Female names wrt Perpetrator and Victim'],['WEAT Score', 'Effect Size']])
-
 
 st.write(df2.to_html(index_names=False), unsafe_allow_html=True)
 st.markdown('')
 st.markdown("The results of the analysis show that in the context of \"Male names and Female names wrt Leader and Follower,\" there is a moderate association between gendered names and the attributes of being a leader or a follower. The WEAT score of 0.195 indicates a positive association, suggesting that male names are slightly more associated with leader-related attributes, while female names are slightly more associated with follower-related attributes. The effect size of 0.498 indicates a moderate practical significance, indicating that there is a notable difference between the word sets.")
-st.markdown("In the case of \"Male names and Female names wrt perpetrator and Victim,\" the results indicate a similar pattern. The WEAT score of 0.183 suggests a positive association, indicating that male names are somewhat more associated with the attributes of being a perpetrator, while female names are somewhat more associated with the attributes of being a victim. The effect size of 0.608 indicates a moderate practical significance, highlighting the meaningful distinction between the word sets.")
+st.markdown("In the case of \"Male names and Female names wrt perpetrator and Victim,\" the results indicate a similar pattern. The WEAT score of 0.237, suggests a positive association, indicating that male names are somewhat more associated with the attributes of being a perpetrator, while female names are somewhat more associated with the attributes of being a victim. The effect size of 0.831 further emphasizes the practical significance of this association, highlighting a notable difference between the word sets.")
