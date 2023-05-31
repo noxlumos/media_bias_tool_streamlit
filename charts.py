@@ -35,8 +35,8 @@ def monthly_chart(option):
         'month': outputs['month'].tolist(),
         'male': outputs['male_counter'].tolist(),
         'female': outputs['female_counter'].tolist(),
-        'articles': outputs['number_of_articles'].tolist()
-    }, columns=['month', 'male', 'female', 'articles'])
+        'number_of_articles': outputs['number_of_articles'].tolist()
+    }, columns=['month', 'male', 'female', 'number_of_articles'])
     prediction_table = data.melt('month', var_name='name', value_name='value')
     return prediction_table
 
@@ -48,9 +48,9 @@ def category_chart(option):
         'category': outputs['category'].tolist(),
         'male': outputs['male_counter'].tolist(),
         'female': outputs['female_counter'].tolist(),
-        'articles': outputs['number_of_articles'].tolist()
+        'number_of_articles': outputs['number_of_articles'].tolist()
     })
-    prediction_table = pd.melt(data, id_vars=['category'], value_vars=['male', 'female', 'articles'])
+    prediction_table = pd.melt(data, id_vars=['category'], value_vars=['male', 'female', 'number_of_articles'])
     return prediction_table
 
 

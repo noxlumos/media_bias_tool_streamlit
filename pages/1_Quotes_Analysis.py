@@ -50,7 +50,7 @@ chart = alt.Chart(category_chart('The Times Quotation Speakers'),
     opacity=1,
 ).encode(
     column=alt.Column('category', header=alt.Header(labelOrient="bottom"),
-                      sort=alt.SortField("articles", order="descending")),
+                      sort=alt.SortField("number_of_articles", order="descending")),
     x=alt.X('variable', axis=None),
     y=alt.Y('value:Q'),
     color=alt.Color('variable')
