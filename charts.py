@@ -12,7 +12,9 @@ option_monthly = {"Wall Street Journal": "data/wsj_names_monthly.csv",
 
 option_category = {"Wall Street Journal": "data/wsj_names_category.csv",
                    "Washington Post": "data/wp_names_category.csv",
-                   "New York Times": "data/wp_names_category.csv"}
+                   "New York Times": "data/wp_names_category.csv",
+                   "The Times": "data/times_names_category.csv",
+                   "The Times Quotation Speakers": "data/times_quotation_speakers_category.csv"}
 
 months = {'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6, 'July': 7, 'August': 8,
           'September': 9, 'October': 10,
