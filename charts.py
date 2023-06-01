@@ -28,6 +28,20 @@ the_times_categories = ['UK Politics', 'Global Politics', 'Brexit',
                         'Television', 'Film', 'Music', 'Radio & Podcasts', 'Books', 'Theatre', 'Art Reviews',
                         'Beauty', 'Food & Drink', 'Fitness & Wellbeing', 'Home Interiors', 'Gardening', 'Driving']
 
+the_washington_post_categories = ['Opinions', 'Local', 'Sports', 'Politics', 'World', 'Lifestyle',
+                                  'Entertainment', 'National', 'Business', 'Technology',
+                                  'National-security', 'Health', 'Travel', 'Transportation',
+                                  'Realestate', 'Elections', 'Education', 'Climate', 'Public-relations',
+                                  'Photography', 'News', 'Us-policy',]
+
+the_wall_street_journal_categories = ['business', 'opinion', 'world', 'markets', 'us',
+                                      'books & arts', 'life & work', 'politics', 'news',
+                                      'economy', 'tech', 'sports', 'style', 'real estate']
+
+pie_chart_category = {"The Wall Street Journal": the_wall_street_journal_categories,
+                      "The Washington Post": the_washington_post_categories,
+                      "New York Times": the_washington_post_categories,
+                      "The Times": the_times_categories}
 
 def monthly_chart(option):
     outputs = pd.read_csv(option_monthly[option])
@@ -54,6 +68,13 @@ def category_chart(option):
     return prediction_table
 
 
+columns = {"The Wall Street Journal": ['male_counter', 'female_counter', 'number_of_articles'],
+           "The Washington Post": ['male_counter', 'female_counter', 'number_of_articles'],
+           "New York Times": ['male_counter', 'female_counter', 'number_of_articles'],
+           "The Times": ['male', 'female', 'article_count'],
+           "The Times Quotation Speakers": ['male', 'female', 'article_count']}
+
+
 def pie_chart(option, month, category):
     outputs = None
 
@@ -63,16 +84,25 @@ def pie_chart(option, month, category):
     elif option == 'The Times Quotation Speakers':
         outputs = pd.read_csv('data/the_times/QS_' + category + '.csv')
 
+    elif option == 'The Washington Post':
+        outputs = pd.read_csv('data/the_washington_post/' + category + '.csv')
+
+    elif option == 'The Wall Street Journal':
+        outputs = pd.read_csv('data/the_wall_street_journal/' + category + '.csv')
+
+    elif option == 'New York Times':
+        outputs = pd.read_csv('data/the_washington_post/' + category + '.csv')
+
     df = pd.DataFrame(outputs)
 
-    male_count = df.get('male')[months.get(month) - 1]
-    female_count = df.get('female')[months.get(month) - 1]
-    article_count = df.get('article_count')[months.get(month) - 1]
+    male_count = df.get(columns.get(option)[0])[months.get(month) - 1]
+    female_count = df.get(columns.get(option)[1])[months.get(month) - 1]
+    article_count = df.get(columns.get(option)[2])[months.get(month) - 1]
 
     male_female = {'name_count': [male_count, female_count]}
 
     fig = px.pie(male_female, values='name_count', names=['Male', 'Female'],
-                 title=f'Male-Female ratio in the \'{category}\' category in {month} 2022', height=300,
+                 title=f'{option}:  Male-Female ratio in the \'{category}\' category in {month} 2022', height=300,
                  width=200, color='name_count', color_discrete_sequence=px.colors.qualitative.G10)
     fig.update_layout(margin=dict(l=20, r=20, t=30, b=0), )
     st.plotly_chart(fig, use_container_width=True)
