@@ -15,7 +15,6 @@ style = """
         }
     </style>
 """
-axis_labels=['Jan, 2022','Feb, 2022','Mar, 2022','Apr, 2022','May, 2022','Jun, 2022','Jul, 2022','Aug, 2022','Sep, 2022','Oct, 2022','Nov, 2022','Dec, 2022']
 st.markdown(style, unsafe_allow_html=True)
 st.title("Gender Media Bias Tool")
 st.subheader('Coverage Bias')
@@ -38,7 +37,7 @@ st.markdown('#')
 chart_monthly = alt.Chart(monthly_chart(option), title=f'Monthly counts of men and women mentioned in {option}') \
     .mark_line() \
     .encode(
-        x=alt.X('month:N'),
+        x=alt.X('month:N', sort=None),
         y=alt.Y('value:Q', title='counts'),
         color=alt.Color("name:N")
     )

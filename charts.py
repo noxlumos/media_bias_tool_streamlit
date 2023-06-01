@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+from collections import OrderedDict
 
 option_monthly = {"The Wall Street Journal": "data/wsj_names_monthly.csv",
                   "The Washington Post": "data/wp_names_monthly.csv",
@@ -19,6 +20,9 @@ option_category = {"The Wall Street Journal": "data/wsj_names_category.csv",
 months = {'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6, 'July': 7, 'August': 8,
           'September': 9, 'October': 10,
           'November': 11, 'December': 12}
+
+axis_labels = ['Jan, 2022', 'Feb, 2022', 'Mar, 2022', 'Apr, 2022', 'May, 2022', 'Jun, 2022', 'Jul, 2022',
+               'Aug, 2022', 'Sep, 2022', 'Oct, 2022', 'Nov, 2022', 'Dec, 2022']
 
 the_times_categories = ['UK Politics', 'Global Politics', 'Brexit',
                         'Economy', 'Markets', 'Property', 'Personal Finance', 'Banking',
@@ -43,15 +47,18 @@ pie_chart_category = {"The Wall Street Journal": the_wall_street_journal_categor
                       "New York Times": the_washington_post_categories,
                       "The Times": the_times_categories}
 
+
 def monthly_chart(option):
     outputs = pd.read_csv(option_monthly[option])
+
     data = pd.DataFrame({
-        'month': outputs['month'].tolist(),
+        'month': axis_labels,
         'male': outputs['male_counter'].tolist(),
         'female': outputs['female_counter'].tolist(),
         'number_of_articles': outputs['number_of_articles'].tolist()
     }, columns=['month', 'male', 'female', 'number_of_articles'])
-    prediction_table = data.melt('month', var_name='name', value_name='value')
+    prediction_table = data.melt(id_vars=['month'], var_name='name', value_name='value',
+                                 ignore_index=False)
     return prediction_table
 
 
@@ -110,4 +117,3 @@ def pie_chart(option, month, category):
     cols = st.columns([1, 1])
     with cols[1]:
         st.text(f'Article count: {article_count}')
-
