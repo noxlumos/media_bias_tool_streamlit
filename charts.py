@@ -31,8 +31,8 @@ the_times_categories = ['UK Politics', 'Global Politics', 'Brexit',
 the_washington_post_categories = ['Opinions', 'Local', 'Sports', 'Politics', 'World', 'Lifestyle',
                                   'Entertainment', 'National', 'Business', 'Technology',
                                   'National-security', 'Health', 'Travel', 'Transportation',
-                                  'Realestate', 'Elections', 'Education', 'Climate', 'Public-relations',
-                                  'Photography', 'News', 'Us-policy',]
+                                  'Realestate', 'Elections', 'Education', 'Climate-environment', 'Public-relations',
+                                  'Photography', 'News', 'Us-policy']
 
 the_wall_street_journal_categories = ['business', 'opinion', 'world', 'markets', 'us',
                                       'books & arts', 'life & work', 'politics', 'news',

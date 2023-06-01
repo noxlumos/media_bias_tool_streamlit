@@ -39,7 +39,7 @@ chart_monthly = alt.Chart(monthly_chart(option), title=f'Monthly counts of men a
     .mark_line() \
     .encode(
         x=alt.X('month:N'),
-        y=alt.Y('value:Q'),
+        y=alt.Y('value:Q', title='counts'),
         color=alt.Color("name:N")
     )
 st.altair_chart(chart_monthly, use_container_width=True)
@@ -52,8 +52,12 @@ chart = alt.Chart(category_chart(option), title=f'Counts of men and women mentio
     column=alt.Column('category', header=alt.Header(labelOrient="bottom"),
                       sort=alt.SortField("number_of_articles", order="descending")),
     x=alt.X('variable', axis=None),
-    y=alt.Y('value:Q'),
-    color=alt.Color('variable')
+    y=alt.Y('value:Q', title='counts'),
+    color=alt.Color('variable', legend=alt.Legend(
+        orient='none',
+        legendX=130, legendY=-20,
+        direction='horizontal',
+        title=None))
 ).configure_view(stroke='transparent')
 st.altair_chart(chart)
 
