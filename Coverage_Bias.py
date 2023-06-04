@@ -45,31 +45,32 @@ st.altair_chart(chart_monthly, use_container_width=True)
 
 st.markdown('#')
 
-chart = alt.Chart(category_chart(option), title=f'Counts of men and women mentioned across categories in {option}').mark_bar(
-    opacity=1,
-).encode(
-    column=alt.Column('category', header=alt.Header(labelOrient="bottom"),
-                      sort=alt.SortField("number_of_articles", order="descending")),
-    x=alt.X('variable', axis=None),
-    y=alt.Y('value:Q', title='counts'),
-    color=alt.Color('variable', legend=alt.Legend(
-        orient='none',
-        legendX=130, legendY=-20,
-        direction='horizontal',
-        title=None))
-).configure_view(stroke='transparent')
-st.altair_chart(chart)
+if option != 'New York Times':
+    chart = alt.Chart(category_chart(option), title=f'Counts of men and women mentioned across categories in {option}').mark_bar(
+        opacity=1,
+    ).encode(
+        column=alt.Column('category', header=alt.Header(labelOrient="bottom"),
+                          sort=alt.SortField("number_of_articles", order="descending")),
+        x=alt.X('variable', axis=None),
+        y=alt.Y('value:Q', title='counts'),
+        color=alt.Color('variable', legend=alt.Legend(
+            orient='none',
+            legendX=130, legendY=-20,
+            direction='horizontal',
+            title=None))
+    ).configure_view(stroke='transparent')
+    st.altair_chart(chart)
 
-st.markdown('#')
+    st.markdown('#')
 
-cols = st.columns([1, 1])
+    cols = st.columns([1, 1])
 
-with cols[0]:
-    category = st.selectbox('Please Select a Category', charts.pie_chart_category[option])
+    with cols[0]:
+        category = st.selectbox('Please Select a Category', charts.pie_chart_category[option])
 
-with cols[1]:
-    month = st.selectbox('Please Select a Month', charts.months.keys())
+    with cols[1]:
+        month = st.selectbox('Please Select a Month', charts.months.keys())
 
-st.markdown('#')
+    st.markdown('#')
 
-pie_chart = charts.pie_chart(option=option, month=month, category=category)
+    pie_chart = charts.pie_chart(option=option, month=month, category=category)
