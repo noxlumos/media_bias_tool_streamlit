@@ -7,7 +7,7 @@ from collections import OrderedDict
 
 option_monthly = {"The Wall Street Journal": "data/wsj_names_monthly.csv",
                   "The Washington Post": "data/wp_names_monthly.csv",
-                  "New York Times": "data/wp_names_monthly.csv",
+                  "New York Times": "data/ny_times_names_monthly.csv",
                   "The Times": "data/times_names_monthly.csv",
                   "The Times Quotation Speakers": "data/times_quotation_speakers_monthly.csv"}
 
@@ -23,6 +23,9 @@ months = {'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June':
 
 axis_labels = ['Jan, 2022', 'Feb, 2022', 'Mar, 2022', 'Apr, 2022', 'May, 2022', 'Jun, 2022', 'Jul, 2022',
                'Aug, 2022', 'Sep, 2022', 'Oct, 2022', 'Nov, 2022', 'Dec, 2022']
+
+axis_labels_nyt = ['Jun, 2021', 'Jul, 2021', 'Aug, 2021', 'Sep, 2021', 'Oct, 2021', 'Nov, 2021', 'Dec, 2021',
+                   'Jan, 2022', 'Feb, 2022', 'Mar, 2022', 'Apr, 2022', 'May, 2022']
 
 the_times_categories = ['UK Politics', 'Global Politics', 'Brexit',
                         'Economy', 'Markets', 'Property', 'Personal Finance', 'Banking',
@@ -51,12 +54,21 @@ pie_chart_category = {"The Wall Street Journal": the_wall_street_journal_categor
 def monthly_chart(option):
     outputs = pd.read_csv(option_monthly[option])
 
-    data = pd.DataFrame({
-        'month': axis_labels,
-        'male': outputs['male_counter'].tolist(),
-        'female': outputs['female_counter'].tolist(),
-        'number_of_articles': outputs['number_of_articles'].tolist()
-    }, columns=['month', 'male', 'female', 'number_of_articles'])
+    if option == 'New York Times':
+        data = pd.DataFrame({
+            'month': axis_labels_nyt,
+            'male': outputs['male_counter'].tolist(),
+            'female': outputs['female_counter'].tolist(),
+        }, columns=['month', 'male', 'female'])
+
+    else:
+        data = pd.DataFrame({
+            'month': axis_labels,
+            'male': outputs['male_counter'].tolist(),
+            'female': outputs['female_counter'].tolist(),
+            'number_of_articles': outputs['number_of_articles'].tolist()
+        }, columns=['month', 'male', 'female', 'number_of_articles'])
+
     prediction_table = data.melt(id_vars=['month'], var_name='name', value_name='value',
                                  ignore_index=False)
     return prediction_table
